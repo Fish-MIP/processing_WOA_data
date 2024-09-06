@@ -49,4 +49,4 @@ po/*~
 rsconnect/
 
 # Jupyter checkpoints
-.ipnyb_checkpoints/
+.ipynb_checkpoints/
