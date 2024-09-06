@@ -4,7 +4,7 @@ Collection of notebooks showing how to download and process World Ocean Atlas da
 
 ## Table of contents
 All files listed below can be foun under the `scripts` folder:   
-- [Access and clip WOA dara](scripts/access_clip_WOA.ipynb): In this Jupyter notebook, we use Python to access WOA data from NOAA's THREDDS server, clip it using a shapefile, and save the data clipped for our area of interest.  
+- [Access and clip WOA data](scripts/access_clip_WOA.ipynb): In this Jupyter notebook, we use Python to access WOA data from NOAA's THREDDS server, clip it using a shapefile, and save the data clipped for our area of interest.  
 
 
 ## Contributors
