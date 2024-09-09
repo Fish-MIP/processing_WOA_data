@@ -12,6 +12,7 @@ import datetime as dt
 import os
 import geopandas as gpd
 import rioxarray
+import numpy as np
 
 # Converting downloaded WOA data to useable format ----
 # Consolidates netCDF files downloaded from WOA converts them into 
