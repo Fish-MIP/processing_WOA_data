@@ -51,10 +51,15 @@ mean_ts <- function(file_path, weights_df, folder_out = NULL){
     select(!lat:vals) |> 
     drop_na()
   
-  #Check if weights exist
+  #Merge data with weights
   ts_df <- df |>
+    select(lat:vals) |> 
     left_join(weights_df, join_by(lon, lat)) |> 
-    group_by(month) |> 
+    #Change NA values to 0 in weights 
+    mutate(cellareao = case_when(is.na(cellareao) ~ 0,
+                                 T ~ cellareao)) |> 
+    group_by(month, depth) |> 
+    #Calculate mean by month and depth
     summarise(weighted_mean = weighted.mean(vals, cellareao, na.rm = T),
               weighted_sd = sqrt(wtd.var(vals, cellareao, na.rm = T)))
   
