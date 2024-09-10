@@ -133,7 +133,10 @@ def mask_ard_data(ard_da, shp_mask, file_out):
         #Keep data array attributes to be recorded in final data frame
         da_attrs = ard_da.attrs
         da_attrs = pd.DataFrame([da_attrs])
-        ind_wider = ['lat', 'lon', 'depth', 'vals']
+        if 'month' in ard_da.dims:
+            ind_wider = ['lat', 'lon', 'month', 'depth', 'vals']
+        else:
+            ind_wider = ['lat', 'lon', 'depth', 'vals']
         #Turn extracted data into data frame and remove rows with NA values
         df = da_mask.to_series().to_frame().reset_index().dropna()
         #Changing column name to standardise across variables
