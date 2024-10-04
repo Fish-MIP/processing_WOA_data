@@ -18,7 +18,7 @@ library(Hmisc)
 woa_dir <- "/g/data/vf71/WOA_data/regional/monthly"
 
 #Folder where mean climatologies with all data will be saved
-base_out_ts <- file.path(woa_dir, "comp_clim")
+base_out_ts <- file.path(woa_dir, "ts")
 if(!dir.exists(base_out_ts)){
   dir.create(base_out_ts)
 }
