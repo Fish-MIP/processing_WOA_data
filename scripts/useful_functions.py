@@ -118,7 +118,10 @@ def mask_ard_data(ard_da, shp_mask, file_out):
     da_mask = ard_da.rio.clip(shp_mask.geometry, shp_mask.crs, drop = True, 
                               all_touched = True)
     #Remove spatial information
-    da_mask = da_mask.drop_vars('crs')
+    if 'spatial_ref' in da_mask.coords:
+        da_mask = da_mask.drop_vars('spatial_ref')
+    elif 'crs' in da_mask.coords:
+        da_mask = da_mask.drop_vars('crs')
     da_mask.encoding = {}
 
     #Check file extension included in path to save data
