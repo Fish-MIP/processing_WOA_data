@@ -83,3 +83,22 @@ mean_ts <- function(file_path, weights_df, folder_out = NULL){
 # Apply function to calculate timeseries ----------------------------------
 woa_list |> 
   map(\(x) mean_ts(x, area_df, base_out_ts))
+
+
+# Applying function to regridded data -------------------------------------
+#Location of parquet files
+woa_dir <- "/g/data/vf71/WOA_data/regional/monthly"
+
+#Folder where mean climatologies with all data will be saved
+base_out_ts_comp <- file.path(woa_dir, "comp_clim")
+if(!dir.exists(base_out_ts_comp)){
+  dir.create(base_out_ts_comp)
+}
+
+#Getting list of parquet files available
+woa_list_reg <- list.files(file.path(woa_dir, "regridded"),
+                           pattern = "parquet$", full.names = T)
+
+#Applying function to regridded data
+woa_list_reg |> 
+  map(\(x) mean_ts(x, area_df, base_out_ts_comp))
